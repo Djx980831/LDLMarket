@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oracle.labormarket.mapper.cdg.CdgSexMapper">
+	<resultMap type="Cdg" id="resultMap" >
+		<result property="cdId" column="cd_id"/>
+		<result property="cdName" column="cd_name"/>
+	</resultMap>
+	<select id="selectAll" resultMap="resultMap">
+	select * from  cdg_sex
+	</select>
+		<select id="selectNameById" parameterType="java.lang.String" resultType="java.lang.String">
+		select cd_name from cdg_sex where cd_id = #{id}
+	</select>	
+	
+</mapper>

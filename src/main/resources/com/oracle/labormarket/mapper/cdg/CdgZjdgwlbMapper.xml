@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oracle.labormarket.mapper.cdg.CdgZjdgwlbMapper">
+	<resultMap type="Cdg" id="resultMap">
+		<result property="cdId" column="dmid"/>
+		<result property="cdName" column="dmmc"/>
+	</resultMap>
+	<select id="selectAll" resultMap="resultMap">
+		select * from zj_d_gwlb
+	</select>
+		<select id="selectNameById" parameterType="java.lang.String" resultType="java.lang.String">
+		select dmmc from zj_d_gwlb where cd_id = #{id}
+	</select>	
+</mapper>

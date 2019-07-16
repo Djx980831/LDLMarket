@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oracle.labormarket.mapper.cdg.CdgRegioncodeMapper">
+	<resultMap type="Cdg" id="resultMap" >
+		<result property="cdId" column="cd_id"/>
+		<result property="cdName" column="cd_name"/>
+	</resultMap>
+		
+	<select	id="select" parameterType="java.util.Map" resultMap="resultMap">
+		select * from cdg_regioncode where 1=1
+		<if test="cd_id!=null">
+			and cd_id like #{cd_id}
+		</if>
+		<if test="citycd_id!=null">
+			<![CDATA[and cd_id  <> #{citycd_id}]]>
+		</if>
+		<if test="areacd_id!=null">
+			<![CDATA[and cd_id  <> #{areacd_id}]]>
+		</if>
+	</select>
+	<select id="selectNameById" parameterType="java.lang.String" resultType="java.lang.String">
+		select cd_name from cdg_regioncode where cd_id = #{id}
+	</select>	
+	<select id="selectAll" resultMap="resultMap">
+		select * from cdg_regioncode
+	</select>
+</mapper>
